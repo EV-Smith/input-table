@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Input Table</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+
+  
+</head> 
+  <body>
+    <h1>Input table</h1>
+        
+      <div class="container">
+        <table>
+          <thead>
+            <tr>
+              <td>Control type</td>
+              <td>Control</td>
+              <td>Value Entered</td>
+            </tr>
+          </thead>
+          <tr>
+            <td>input type = "checkbox"</td>
+            <td><form><input id="checkbox" type="checkbox" name="checkbox" checked onClick="valCheckbox();"></form></td>
+            <td id="checkboxResult">checked</td>
+          </tr>
+          <tr>
+            <td>input type = "radio"</td>
+            <td>
+              <form>
+                <input id="radio1" type="radio" name="radio" value="radio1" checked onClick="valRadio1();"> first
+                <input id="radio2" type="radio" name="radio" value="radio2" onClick="valRadio2();"> second
+                <input id="radio3" type="radio" name="radio" value="radio3" onClick="valRadio3();"> third
+              </form>
+            </td>
+            <td id="radioResult">first</td>
+          </tr>
+          <tr>
+            <td>input type = "text"</td>
+            <td>
+              <form>
+                <input id="text" type="text" name="text" onChange="valText();">
+              </form>
+              <br>
+              <p class="note">click out of textbox when done typing</p>
+            </td>
+            <td id="textResult">none</td>
+          </tr>
+          <tr>
+            <td>textarea</td>
+            <td>
+              <form>
+                <textarea id="textarea" onChange="valTextarea();"></textarea>
+              </form>
+              <br>
+              <p class="note">click out of textbox when done typing</p>
+            </td>
+            <td id="textareaResult">none</td>
+          </tr>
+          <tr>
+            <td>select</td>
+            <td>
+              <form>
+                <select id="select" onChange="valOption();">
+                  <option value="" name="placeholder" disabled selected>select an option</option>
+                  <option id="first" value="first" name="first" onChange="valOption1();">first</option>
+                  <option id="second" value="second" name="second" onChange="valOption2();">second</option>
+                  <option id="third" value="third" name="third" onChange="valOption3();">third</option>
+                </select>
+              </form>
+            </td>
+            <td id="selectResult">none</td>
+          </tr>
+        
+        </table>
+        
+        <form class="right">
+          <input id="reset" type="reset" value="Reset" name="Reset" onClick="resetResults(); return false;">
+        </form>
+      </div>
+    <script>
+      
+      function valCheckbox() {
+        if(document.getElementById('checkbox').checked){
+          document.getElementById('checkboxResult').innerHTML = 'checked';
+        } else {
+          document.getElementById('checkboxResult').innerHTML = 'unchecked';
+        }
+      }
+      
+      function valRadio1() {
+        if(document.getElementById('radio1').checked){
+          document.getElementById('radioResult').innerHTML = 'first';
+        } else {
+          return;
+        }
+      }
+      function valRadio2() {
+        if(document.getElementById('radio2').checked){
+          document.getElementById('radioResult').innerHTML = 'second';
+        } else {
+          return;
+        }
+      }
+      function valRadio3() {
+        if(document.getElementById('radio3').checked){
+          document.getElementById('radioResult').innerHTML = 'third';
+        } else {
+          return;
+        }
+      }
+      
+      function valText() {
+        var textValue = document.getElementById('text').value;
+        document.getElementById('textResult').innerHTML = textValue;
+        return false;
+      }
+      
+      function valTextarea() {
+        var textareaValue = document.getElementById('textarea').value;
+        document.getElementById('textareaResult').innerHTML = textareaValue;
+        return false;
+      }
+
+      function valOption() {
+        var selection = document.getElementById('select');
+        var selectionValue = select[select.selectedIndex].value;
+        document.getElementById('selectResult').innerHTML = selectionValue;
+      }
+      
+      /*function valOption1() {
+        if(document.getElementById('first').selected){
+          document.getElementById('selectResult').innerHTML = 'first';
+        } else {
+          return;
+        }
+      }
+      function valOption2() {
+        if(document.getElementById('second').selected){
+          document.getElementById('selectResult').innerHTML = 'second';
+        } else {
+          return;
+        }
+      }
+      function valOption3() {
+        if(document.getElementById('third').selected){
+          document.getElementById('selectResult').innerHTML = 'third';
+        } else {
+          return;
+        }
+      }  */    
+      
+      function resetResults() {
+        document.getElementById('checkboxResult').innerHTML = '';
+        document.getElementById('radioResult').innerHTML = '';
+        document.getElementById('textResult').innerHTML = '';
+        document.getElementById('textareaResult').innerHTML = '';
+        document.getElementById('selectResult').innerHTML = ' ';
+        document.getElementById('checkbox').checked = false;
+        document.getElementById('radio1').checked = false;
+        document.getElementById('radio2').checked = false;
+        document.getElementById('radio3').checked = false;
+        document.getElementById('text').value = ' ';
+        document.getElementById('textarea').value = ' ';
+        document.getElementById('select').value = ' ';
+      }
+    </script>
+  </body>
+</html> 
